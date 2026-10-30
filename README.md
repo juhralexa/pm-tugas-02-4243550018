@@ -64,9 +64,15 @@ Bukti screenshot:
 ![Pesanan Tidak Valid 1](screenshots/pesanan-tidak-valid-1.png)
 ![Pesanan Tidak Valid 2](screenshots/pesanan-tidak-valid-2.png)
 
-## Penjelasan Konsep Dart dan Null Safety
+### Penjelasan Konsep Dart dan Null Safety
 
-Dalam Dart, `var` digunakan untuk mendeklarasikan variabel dengan tipe data yang disimpulkan secara otomatis dari nilai awalnya. `final` digunakan ketika nilai variabel hanya boleh ditetapkan satu kali, sedangkan `const` digunakan untuk nilai konstan yang sudah diketahui saat kompilasi. Pada program ini, `final` digunakan untuk variabel seperti `katalog`, `inputPesanan`, `keranjang`, dan `totalBelanja` di dalam file `bin/kasir.dart`. Program tidak menggunakan `var` dan `const` karena deklarasi yang digunakan sudah cukup dengan `final` dan nilai yang tersedia. Null safety diterapkan pada pembacaan input melalui `stdin.readLineSync() ?? ''`, sehingga apabila input bernilai null, program menggunakan string kosong. Selain itu, `int.tryParse()` menghasilkan nilai nullable yang diperiksa terlebih dahulu sebelum digunakan. Dengan demikian, program dapat menangani input yang tidak sesuai tanpa menyebabkan program berhenti karena kesalahan konversi.
+Dalam bahasa Dart, `var` digunakan untuk mendeklarasikan variabel dengan tipe data yang ditentukan secara otomatis berdasarkan nilai awalnya. `final` digunakan ketika nilai variabel hanya dapat ditetapkan satu kali, sedangkan `const` digunakan untuk nilai konstan yang sudah diketahui saat kompilasi.
+
+Pada program ini, `final` digunakan untuk beberapa variabel, seperti `katalog` pada baris 8, `inputPesanan` pada baris 40, `keranjang` dan `pesananDitolak` pada baris 43–44, serta `totalBelanja` pada baris 71. Program tidak menggunakan `var` dan `const` karena kebutuhan deklarasi variabel sudah dapat dipenuhi menggunakan `final`.
+
+Null safety diterapkan pada baris 40 melalui `stdin.readLineSync() ?? ''`. Operator `??` digunakan agar program memberikan string kosong apabila hasil pembacaan input bernilai `null`. Selanjutnya, pada baris 56, `int.tryParse()` digunakan untuk mengubah jumlah pesanan menjadi bilangan bulat. Hasilnya dapat bernilai `null`, sehingga pemeriksaan dilakukan pada baris 59–61 sebelum nilai digunakan. Dengan demikian, program dapat menangani input yang tidak valid tanpa mengalami kesalahan konversi yang menyebabkan aplikasi berhenti.
+
+**Referensi kode:** `bin/kasir.dart`, baris 8, 40, 43–44, 56, 59–61, dan 71.
 
 ## Penggunaan AI
 
