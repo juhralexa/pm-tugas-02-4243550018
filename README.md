@@ -64,6 +64,16 @@ Bukti screenshot:
 ![Pesanan Tidak Valid 1](screenshots/pesanan-tidak-valid-1.png)
 ![Pesanan Tidak Valid 2](screenshots/pesanan-tidak-valid-2.png)
 
+### 3. Pengujian Otomatis
+
+Pengujian otomatis dilakukan menggunakan perintah `dart test`.
+Terdapat enam skenario pengujian yang mencakup perhitungan subtotal,
+pemberian diskon, perhitungan total pembayaran, pemeriksaan kode produk,
+dan validasi jumlah pesanan.
+
+Hasil pengujian menunjukkan bahwa keenam pengujian berhasil dijalankan
+dengan keterangan `All tests passed!`.
+
 ### Penjelasan Konsep Dart dan Null Safety
 
 Dalam bahasa Dart, `var` digunakan untuk mendeklarasikan variabel dengan tipe data yang ditentukan secara otomatis berdasarkan nilai awalnya. `final` digunakan ketika nilai variabel hanya dapat ditetapkan satu kali, sedangkan `const` digunakan untuk nilai konstan yang sudah diketahui saat kompilasi.
