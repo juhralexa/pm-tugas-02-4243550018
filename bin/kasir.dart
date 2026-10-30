@@ -43,7 +43,7 @@ void main() {
   final List<Map<String, Object>> keranjang = [];
   final List<String> pesananDitolak = [];
 
-  // 6. Memisahkan pesanan berdasarkan tanda koma
+  // 6. Memisahkan dan memvalidasi pesanan
   final List<String> daftarPesanan = inputPesanan.split(',');
 
   for (final pesanan in daftarPesanan) {
@@ -66,37 +66,41 @@ void main() {
       continue;
     }
 
-    // 7. Menghitung subtotal setiap produk
-    final int subtotal = produk.harga * jumlah;
-
     // Memasukkan produk ke keranjang
     keranjang.add({
       'nama': produk.nama,
       'kategori': produk.kategori,
       'harga': produk.harga,
       'jumlah': jumlah,
-      'subtotal': subtotal,
     });
   }
 
-  // 8. Menghitung total belanja menggunakan fold
-  final int totalBelanja = keranjang.fold<int>(
+  // 7. Menghitung subtotal setiap produk menggunakan map
+  final List<int> daftarSubtotal = keranjang.map((item) {
+    final int harga = item['harga'] as int;
+    final int jumlah = item['jumlah'] as int;
+
+    return harga * jumlah;
+  }).toList();
+
+  // Menghitung total belanja menggunakan fold
+  final int totalBelanja = daftarSubtotal.fold<int>(
     0,
-    (total, item) => total + (item['subtotal'] as int),
+    (total, subtotal) => total + subtotal,
   );
 
-  // 9. Menghitung diskon 10% jika belanja minimal Rp100.000
+  // 8. Menghitung diskon 10% jika belanja minimal Rp100.000
   final int diskon = totalBelanja >= 100000 ? (totalBelanja * 0.10).round() : 0;
 
-  // 10. Menghitung total pembayaran
+  // 9. Menghitung total pembayaran
   final int totalBayar = totalBelanja - diskon;
 
-  // 11. Mengumpulkan kategori produk menggunakan Set
+  // 10. Mengumpulkan kategori produk menggunakan Set
   final Set<String> kategoriDibeli = keranjang
       .map((item) => item['kategori'] as String)
       .toSet();
 
-  // 12. Menampilkan struk belanja
+  // 11. Menampilkan struk belanja
   print('\n==============================================');
   print('                 STRUK BELANJA');
   print('==============================================');
@@ -105,10 +109,14 @@ void main() {
     print('Tidak ada pesanan yang valid.');
   } else {
     for (final item in keranjang) {
+      final int harga = item['harga'] as int;
+      final int jumlah = item['jumlah'] as int;
+      final int subtotal = harga * jumlah;
+
       print('${item['nama']}');
       print(
-        '${item['jumlah']} x Rp${item['harga']} '
-        '= Rp${item['subtotal']}',
+        '$jumlah x Rp$harga '
+        '= Rp$subtotal',
       );
     }
   }
@@ -119,7 +127,7 @@ void main() {
   print('Total Bayar   : Rp$totalBayar');
   print('----------------------------------------------');
 
-  // 13. Menampilkan kategori produk yang dibeli
+  // 12. Menampilkan kategori produk yang dibeli
   if (kategoriDibeli.isNotEmpty) {
     print('Kategori Produk Dibeli:');
 
@@ -130,7 +138,7 @@ void main() {
     print('----------------------------------------------');
   }
 
-  // 14. Menampilkan pesanan yang ditolak
+  // 13. Menampilkan pesanan yang ditolak
   if (pesananDitolak.isNotEmpty) {
     print('Pesanan yang ditolak:');
 
@@ -145,6 +153,6 @@ void main() {
   print('       TERIMA KASIH TELAH BERBELANJA');
   print('==============================================');
 
-  // 15. Menampilkan pesanan yang dimasukkan
+  // 14. Menampilkan pesanan yang dimasukkan
   print('\nPesanan yang dimasukkan: $inputPesanan');
 }
