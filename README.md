@@ -46,8 +46,8 @@ Hasil yang diharapkan:
 
 Bukti screenshot:
 
-- `screenshots/pesanan-valid-1.png`
-- `screenshots/pesanan-valid-2.png`
+![Pesanan Valid 1](screenshots/pesanan-valid-1.png)
+![Pesanan Valid 2](screenshots/pesanan-valid-2.png)
 
 ### 2. Pengujian Pesanan Tidak Valid
 
@@ -61,8 +61,8 @@ Hasil yang diharapkan:
 
 Bukti screenshot:
 
-- `screenshots/pesanan-tidak-valid-1.png`
-- `screenshots/pesanan-tidak-valid-2.png`
+![Pesanan Tidak Valid 1](screenshots/pesanan-tidak-valid-1.png)
+![Pesanan Tidak Valid 2](screenshots/pesanan-tidak-valid-2.png)
 
 ## Penjelasan Konsep Dart dan Null Safety
 
