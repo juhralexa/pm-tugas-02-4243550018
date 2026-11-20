@@ -81,4 +81,4 @@ Null safety diterapkan untuk mencegah kesalahan akibat nilai null. Pada baris 40
 
 ## Penggunaan AI
 
-Dalam pengerjaan tugas ini, ChatGPT digunakan sebagai alat bantu untuk memahami instruksi, memberikan arahan penyusunan kode, membantu pemeriksaan kesalahan, dan menjelaskan konsep Dart. Kode program tetap diperiksa dan dijalankan kembali oleh mahasiswa melalui Visual Studio Code menggunakan perintah `dart format .`, `dart analyze`, serta pengujian langsung pada aplikasi.
+Dalam pengerjaan tugas ini, Claude AI digunakan sebagai alat bantu untuk memahami instruksi, memberikan arahan penyusunan kode, membantu pemeriksaan kesalahan, dan menjelaskan konsep Dart. Kode program tetap diperiksa dan dijalankan kembali oleh saya sendiri melalui Visual Studio Code menggunakan perintah `dart format .`, `dart analyze`, serta pengujian langsung pada aplikasi.
